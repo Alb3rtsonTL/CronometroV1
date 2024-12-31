@@ -1,0 +1,148 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: #1a202c; /* Fondo oscuro limpio */
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    text-align: center;
+    overflow: hidden; /* Evita el scroll */
+    position: relative; /* Necesario para el stacking context */
+}
+
+/* Contenedor principal */
+.contenedor {
+    position: relative; /* Posiciona el contenedor en relación al video */
+    z-index: 10; /* Asegura que esté encima del video */
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    color: white;
+}
+
+/* Video de fondo */
+.background-video {
+    position: fixed; /* Fija el video al fondo */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cubre toda la pantalla */
+    z-index: 0; /* Asegura que el video esté al fondo */
+    opacity: 1; /* Asegura visibilidad total */
+    pointer-events: none; /* Evita interacciones con el video */
+}
+
+/* Título */
+h1 {
+    font-size: 3rem;
+    margin-bottom: 30px;
+    color: #e2e8f0; /* Asegura un color claro */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Mejora la visibilidad del texto */
+    animation: fadeInDown 2s ease;
+    z-index: 20; /* Prioridad sobre otros elementos */
+    position: relative; /* Asegura su posición en la pila */
+}
+
+/* Cronómetro */
+.cronometroCaja {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    z-index: 20; /* Asegura que el cronómetro esté visible */
+    position: relative;
+}
+
+/* Bloques del cronómetro */
+.cronometroCaja div .block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #2d3748; /* Fondo gris oscuro */
+    padding: 10px;
+    border-radius: 10px;
+    border: #31466a82 solid 2px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.434);
+    width: 190px;
+    height: 165px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s ease;
+    margin-bottom: 10px;
+    transform: translateY(0);
+}
+
+.cronometroCaja div .block:hover {
+    transform: translateY(-5px); /* Efecto leve al pasar el mouse */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* Recuadro del número */
+.cronometroCaja div .block .number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 6rem;
+    font-weight: bold;
+    color: #60a5fa;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    opacity: 1; /* Asegura visibilidad total */
+    position: relative;
+}
+
+/* Etiqueta */
+.cronometroCaja div .block .label {
+    font-size: 0.9rem;
+    color: #a0aec0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Animación más lenta y suave */
+@keyframes fadeMove {
+    0% {
+        opacity: 0.4;
+        transform: translateY(10px);
+        border: #31466a82 solid 2px;
+    }
+
+    50% {
+        opacity: 0.8;
+        transform: translateY(-5px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(-10px);
+        border: #466396 solid 2px;
+    }
+}
+
+div .block.fade {
+    animation: fadeMove 1s ease-in-out;
+}
+
+/* Animación hacia abajo para el título */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
