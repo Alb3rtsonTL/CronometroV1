@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const updateCountdown = () => {
     const now = new Date();
     const newYear = new Date(2025, 0, 1, 0); // Fecha objetivo: 1 de enero de 2025
-    //const newYear = new Date(2024, 11, 1, 0); // Fecha objetivo: 1 de enero de 2025
+    // const newYear = new Date(2024, 11, 31, 19, 41); // Fecha objetivo: 1 de enero de 2025
 
     const diff = newYear - now;
 
@@ -100,7 +100,7 @@ function activateAnimation() {
 
   // Crear la imagen superpuesta con opacidad
   const overlayImage = document.createElement("img");
-  overlayImage.src = "./NewYear-2025.jpg"; // Ruta de la imagen
+  overlayImage.src = "./media/NewYear-2025.jpg"; // Ruta de la imagen
   overlayImage.style.position = "relative";
   overlayImage.style.zIndex = "2"; // Frente al video
   overlayImage.style.opacity = "0.8"; // Opacidad ajustada
@@ -135,43 +135,4 @@ function activateAnimation() {
     videoElement.muted = false; // Cambiar a `false` si se desea sonido
     // animationContainer.remove();
   });
-}
-
-// Función para mostrar un video en pantalla completa
-function playFullScreenVideo() {
-  // Crear el elemento de video
-  const videoElement = document.createElement("video");
-  videoElement.id = "fullScreenVideo";
-  videoElement.src = "fireworksShow.mp4"; // Ruta del video (asegúrate de que sea válida)
-  videoElement.style.position = "fixed";
-  videoElement.style.top = "0";
-  videoElement.style.left = "0";
-  videoElement.style.width = "100%";
-  videoElement.style.height = "100%";
-  videoElement.style.objectFit = "cover";
-  videoElement.style.zIndex = "10000";
-  //   videoElement.autoplay = true;
-  videoElement.loop = false; // Cambiar a true si deseas que el video se repita
-  videoElement.controls = true; // Mostrar controles para controlar el video
-  videoElement.muted = false; // Silenciado por defecto para permitir la reproducción automática en navegadores modernos
-  videoElement.playsInline = true; // Evita que el video entre en pantalla completa automáticamente en dispositivos móviles
-
-  // Añadir el video al cuerpo del documento
-  document.body.appendChild(videoElement);
-
-  // Eliminar el video al terminar
-  videoElement.onended = () => {
-    videoElement.remove(); // Eliminar el elemento de video del DOM
-  };
-
-  // Manejar errores de carga del video
-  videoElement.onerror = () => {
-    console.error("Error al cargar el video. Verifica la ruta y el formato.");
-    videoElement.remove(); // Eliminar el video si ocurre un error
-  };
-
-  // Opción adicional: permitir salir del video con un clic (opcional)
-  //   videoElement.addEventListener("click", () => {
-  //     videoElement.remove();
-  //   });
 }
