@@ -1,73 +1,107 @@
-<?php
-
-/**
- * Cronometro para año nuevo
- *
- * Cronometro para año nuevo con animaciones y videos para el año nuevo 2025 con HTML, CSS y JavaScript.
- *
- * @package     CronometroAñoNuevo
- * @subpackage  Pages
- * @category    Pages
- * @author      Alb3rtsonTL
- * @version     1.0.1
- */
-?>
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
-    <!-- Meta-etiquetas -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Cronometro para año nuevo con animaciones y videos">
-    <meta name="keywords" content="año nuevo, cronometro para año nuevo, cronometro, año nuevo 2025">
-    <link rel="shortcut icon" href="./Logo.png" type="image/x-icon">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="language" content="es">
+  <title>Cuenta regresiva de Año Nuevo | Temporizador en tiempo real</title>
+  <meta name="description" content="Temporizador en tiempo real para Año Nuevo. Descubre cuántos días, horas, minutos y segundos faltan para recibir el año nuevo.">
+  <meta name="author" content="Alb3rtsonTL - Albertson Terrero López">
+  <meta name="robots" content="index, follow">
+  <!-- Favicons -->
+  <link rel="icon" href="https://raw.githubusercontent.com/Alb3rtsonTL/Alb3rtsonTL/refs/heads/main/assets/img/favicon.ico" type="image/png">
+  <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/Alb3rtsonTL/Alb3rtsonTL/refs/heads/main/assets/img/logo.png">
+  <!-- Open Graph -->
+  <meta property="og:title" content="🎆 Cuenta regresiva para Año Nuevo">
+  <meta property="og:description" content="No te pierdas el momento exacto. Mira la cuenta regresiva en tiempo real y celebra la llegada del año nuevo.">
+  <meta property="og:image" content="img/og-image.png">
+  <meta property="og:type" content="website">
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="🎉 Cuenta regresiva para Año Nuevo">
+  <meta name="twitter:description" content="No te pierdas el momento exacto con este temporizador preciso para celebrar la llegada del año nuevo.">
+  <meta name="twitter:image" content="img/og-image.png">
 
-    <!-- Etiqueta de título -->
-    <title>Cronometro Año Nuevo</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
-    <!-- Metadatos opcionales -->
-    <meta name="author" content="Albe3rtsonTL">
-    <meta name="robots" content="index, follow">
-    <meta name="og:title" content="Cronometro para año nuevo">
-    <meta name="og:description" content="Cronometro para año nuevo con animaciones y videos">
-    <meta name="og:image" content="./Logo.png">
-
-    <link rel="stylesheet" href="./final/cronometro.css">
-    <script src="./final/cronometro.js" defer></script>
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <div class="contenedor">
-        <!-- Video como fondo -->
-        <video autoplay muted loop playsinline class="background-video">
-            <source src="./media/harmony-in-the-wild.1920x1080.mp4" type="video/mp4">
-            Tu navegador no soporta la reproducción de videos.
-        </video>
-
-        <!-- Contenido principal -->
-        <h1>Cuenta Regresiva</h1>
-        <div class="cronometroCaja">
-            <div>
-                <div class="block">
-                    <div class="number" id="hourElement">00</div>
-                </div>
-                <div class="label">Horas</div>
-            </div>
-            <div>
-                <div class="block">
-                    <div class="number" id="minsElement">00</div>
-                </div>
-                <div class="label">Minutos</div>
-            </div>
-            <div>
-                <div class="block">
-                    <div class="number" id="secsElement">00</div>
-                </div>
-                <div class="label">Segundos</div>
-            </div>
+  <div class="background">
+    <div class="overlay"></div>
+    <div class="container">
+      <h1>Cuenta regresiva para Año Nuevo</h1>
+      <div class="countdown">
+        <div class="box" id="days-container">
+          <div class="number-box" id="days-box">
+            <div class="number" id="days">00</div>
+          </div>
+          <span class="label">DÍAS</span>
         </div>
+        <div class="box" id="hours-container">
+          <div class="number-box" id="hours-box">
+            <div class="number" id="hours">00</div>
+          </div>
+          <span class="label">HORAS</span>
+        </div>
+        <div class="box" id="minutes-container">
+          <div class="number-box" id="minutes-box">
+            <div class="number" id="minutes">00</div>
+          </div>
+          <span class="label">MINUTOS</span>
+        </div>
+        <div class="box" id="seconds-container">
+          <div class="number-box" id="seconds-box">
+            <div class="number" id="seconds">00</div>
+          </div>
+          <span class="label">SEGUNDOS</span>
+        </div>
+      </div>
     </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>
+        Copyright &copy; 2024-<span id="currentYear"></span>
+        <strong> <a id="footerName" href="https://github.com/Alb3rtsonTL" target="_blank">Alb3rtsonTL</a></strong>.
+        Todos los derechos reservados.
+      </p>
+      <div class="footer-social" id="footerSocial">
+        <div class="hero-social fade-in" id="socialLinks">
+          <a href="https://github.com/Alb3rtsonTL" target="_blank" rel="noopener noreferrer" class="social-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+            </svg>
+          </a>
+          <a href="#" class="btn btn-primary" id="shareButton">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="18" cy="5" r="3"></circle>
+              <circle cx="6" cy="12" r="3"></circle>
+              <circle cx="18" cy="19" r="3"></circle>
+              <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+              <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+            </svg>
+            <span>Compartir</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- TARGET_YEAR calculado en JS puro, sin PHP -->
+  <script>
+    const TARGET_YEAR = new Date().getFullYear() + 1;
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+  </script>
+  <script src="script.js"></script>
 </body>
 
 </html>
