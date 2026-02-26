@@ -83,10 +83,10 @@ function updateCountdown() {
 <div class="celebrate-year" id="celebrateYear">${TARGET_YEAR}</div>
   `;
 
-        // Coloca el fondo festivo si lo tenías
+        // Coloca el fondo festivo
         const bg = document.querySelector(".background");
         if (bg) {
-            bg.style.background = 'url("./img/fondo.gif") center / cover no-repeat';
+            bg.style.background = 'url("./img/fondoNewYear.gif") center / cover no-repeat';
         }
 
         // lanzar confetti
